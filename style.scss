@@ -1,0 +1,298 @@
+@charset "utf-8";
+@import "compass";
+
+//Font
+$BaseFontFamily: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", メイリオ, Verdana, "ＭＳ Ｐゴシック", sans-serif;
+
+//Color
+$base-yellow: #fac524;
+$light-yellow: #fcf8ed;
+$light-red: #fc8383;
+$link-brown: #53461f;
+
+/* Base
+------------------------------------------------------------------------------*/
+html {
+  font-size: 62.5%;
+}
+
+@mixin fontsize($size: 24, $base: 10) {
+  font-size: $size + px;
+  font-size: ($size / $base) * 1rem;
+}
+
+body {
+    @include fontsize(16);
+    font-family: $BaseFontFamily;
+    line-height: 1.6;
+    letter-spacing: 0.1rem;
+}
+
+a {
+    text-decoration: none;
+    @include link-colors($light-red, darken($light-red, 30%), darken($light-red, 30%), $light-red);
+    transition: 0.2s;
+}
+
+h1 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    @include fontsize(30);
+}
+
+h2 {
+    @include fontsize(20);
+    margin-top: 50px;
+}
+
+h3 {
+    @include fontsize(20);
+    margin: 0;
+}
+
+h4 {
+    @include fontsize(16);
+    margin: 10px 0;
+}
+
+h5 {
+    @include fontsize(14);
+    margin-top: 20px;
+    margin-bottom: 0;   
+}
+
+/* Header
+------------------------------------------------------------------------------*/
+
+.cover {
+    background-image: url("images/cover.jpg");
+    height: 400px;
+    width: 100%;
+    background-size: cover;
+    background-position: center center;
+    @media screen and (-webkit-min-device-pixel-ratio:2), (min-resolution: 2dppx) { background-image: url("images/cover@2x.jpg"); }
+    display: flex;
+    align-items: center;
+	justify-content: center;
+    
+    img {
+        width: 80%;
+    }
+}
+
+nav {
+    width: 100%;
+    background-color: $base-yellow;
+    
+    .nav_wrapper {
+        width: 980px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+	    justify-content: center;
+	    
+        .nav_content {
+            width: 140px;
+            text-align: center;
+            border-right: 1px solid $link-brown;
+            
+            a {
+                display: inline-block;
+                width: 100%;
+                height: 100%;
+                padding: 8px 0;
+                @include link-colors(black, $base-yellow, $base-yellow, black);
+                transition: 0.3s;
+                
+                &:hover {
+                    background-color: $link-brown;
+                    transition: 0.3s;
+                }
+                
+                .fa {
+                    @include fontsize(30);
+                }
+            }
+        }
+        
+        .border_left {
+            border-left: 1px solid $link-brown;
+        }
+    }
+}
+
+/* Main + Sidebar
+------------------------------------------------------------------------------*/
+
+.main_wrapper {
+    width: 980px;
+    margin: 0 auto;
+    display: flex;
+    
+    main {
+        width: 100%;
+        padding: 40px 20px 80px 20px;
+        
+        .content_wrapper {
+            display: flex;
+            
+            .news_category {
+                width: 100px;
+                background-color: $light-red;
+                padding: 10px 0;
+                text-align: center;
+                
+                p {
+                    margin: 0;
+                }
+            }
+            
+            .news_title {
+                padding-top: 3px;
+                padding-left: 15px;
+            
+                p {
+                    margin: 0;
+                    line-height: 1.5;
+                }
+                
+                .date {
+                    @include fontsize(13);
+                }
+            }
+        }
+        
+        .container {
+            width: 33%;
+            margin-right: 20px;
+            
+            &:hover {
+                background-color: white;
+                opacity: 0.4;
+                transition: 0.3s;
+            }
+            
+            a {
+                .blog_cover {
+                    background-image: url("images/img_event.jpg");
+                    height: 130px;
+                    width: 100%;
+                    background-size: cover;
+                    background-position: center center;
+                }
+                
+                h4 {
+                    color: black;
+                }
+                
+                p {
+                    color: black;
+                    margin: 0;
+                    @include fontsize(14);
+                }
+                
+                .detail {
+                    margin-top: 10px;
+                    text-align: right;
+                }
+            }
+        }
+        
+        
+        .link_to_all {
+            width: 200px;
+            margin-top: 40px;
+            margin-left: auto;
+        }
+    }
+    
+    aside.top {
+        width: 300px;
+        background-color: $light-yellow;
+        padding: 40px 20px 30px 20px;
+        
+        a {
+            &:hover {
+                background-color: white;
+                opacity: 0.4;
+                transition: 0.3s;
+            }
+        }    
+        
+        img {
+            width: 100%;
+        }
+    }
+    
+    aside.page {
+        width: 300px;
+        background-color: $light-yellow;
+        padding: 40px 0 30px 0;
+        
+        h3 {
+            margin-left: 20px;
+            line-height: 1;
+        }
+        
+        ul {
+            margin-top: 0;
+            padding-left: 0;
+            list-style: none;
+            
+            li.top {
+                border-top: 1px solid $link-brown;
+            }
+            
+            li {
+                border-bottom: 1px solid $link-brown;
+            
+                a {
+                    display: block;
+                    padding: 12px 20px 12px 20px;
+                    @include link-colors($light-red, $light-yellow, $light-yellow, $light-red);
+                
+                    &:hover {
+                        background-color: $light-red;
+                    }
+                }
+            }
+        }
+    }
+}
+
+/* Footer
+------------------------------------------------------------------------------*/
+
+footer {
+    background-color: $base-yellow;
+    padding: 30px 0;
+    @include fontsize(14);
+    
+    .footer_wrapper {
+        width: 980px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        
+        .footer_container {
+        }
+            
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            line-height: 2;
+        }
+            
+        a {
+            text-decoration: underline;
+            @include link-colors(black, lighten(black, 70%), lighten(black, 70%), black);
+        }
+    }
+    
+    p {
+        margin-top: 60px;
+        text-align: center;
+        @include fontsize(12);
+    }
+}
